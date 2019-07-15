@@ -8,10 +8,7 @@ script alongside with all the packages mentioned in it (`doom-themes`,
 let
 pkgs = import <nixpkgs> {};
 emacsWithConfig = pkgs.callPackage 
-  (builtins.fetchGit {
-    url = https://github.com/utdemir/emacs-with-config;
-    rev = "master";
-  })
+  (builtins.fetchTarball "https://github.com/utdemir/emacs-with-config/archive/master.tar.gz")
   {};
 in
 emacsWithConfig ''

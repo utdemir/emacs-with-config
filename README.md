@@ -8,8 +8,8 @@ script alongside with all the packages mentioned in it (`doom-themes`,
 let
 pkgs = import <nixpkgs> {};
 emacsWithConfig = pkgs.callPackage 
-  (builtins.fetchgit {
-    url = https://github.com/utdemir/emacs-with-packages;
+  (builtins.fetchGit {
+    url = https://github.com/utdemir/emacs-with-config;
     rev = "master";
   })
   {};
@@ -31,6 +31,7 @@ emacsWithConfig ''
   (use-package magit
     :bind
     ("C-x m" . magit-status))
+''
 ```
 
 To be more precise, it will:

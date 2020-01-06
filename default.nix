@@ -1,7 +1,6 @@
-{ pkgs }: el:
+{ pkgs }: init:
 
 let
-  init = pkgs.writeText "init.el" el;
   packages = import (pkgs.runCommand "mk-emacs" {
     buildInputs = [ (pkgs.emacsWithPackages (epkgs: [])) ];
   } "emacs --script ${./use-package-to-nix.el} ${init} > $out");
@@ -9,7 +8,7 @@ let
     let s = epkgs.elpaPackages // epkgs.melpaPackages // epkgs;
     in  builtins.map (i: s.${i}) (packages ++ ["use-package"])
   );
-in 
+in
   pkgs.runCommand "emacs-custom" { buildInputs = [ pkgs.makeWrapper ]; } ''\
     mkdir -p $out/bin
     makeWrapper ${emacs}/bin/emacs $out/bin/emacs \

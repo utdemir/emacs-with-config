@@ -1,5 +1,7 @@
 # emacs-with-config
 
+**Deprecated**: Much better & maintained version is here: https://github.com/nix-community/emacs-overlay
+
 This function will give you an Emacs derivation which loads the given
 script alongside with all the packages mentioned in it via `use-package`.
 
